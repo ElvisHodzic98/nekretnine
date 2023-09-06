@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { Header } from "./components/header/header";
 import {Footer} from "./components/footer/footer";
+import { useState, useEffect } from 'react';
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   useEffect(() => {
