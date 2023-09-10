@@ -1,0 +1,4 @@
+.lokacija {
+    display: flex;
+    flex-direction: column;
+  }

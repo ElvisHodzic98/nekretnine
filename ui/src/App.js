@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { Nekretnine } from './pages/nekretnine/nekretnine';
+import { Agenti } from './pages/agenti/agenti';
+import {Lokacije} from './pages/lokacije/lokacije';
+import {NekretninaDetaljno} from './pages/nekretnina-detaljno/nekretnina-detaljno';
+import {Login} from './pages/login/login';
+import {Upiti} from './pages/upiti/upiti';
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,15 +32,16 @@ function App() {
         <div className="page-wrapper">
           {/* <Header /> */}
           <Routes>
-            <Route path="/nekretnine" element={<Nekretnine tekst="Elvis" />} />
-            {/* <Route path="/agenti" element={<Agenti />} />
-          <Route path="/lokacije" element={<Lokacije />} />
-          <Route path="/login" element={<Login />} />
+            <Route path="/nekretnine" element={<Nekretnine/>} />
+             <Route path="/agenti" element={<Agenti />} />
+             <Route path="/lokacije" element={<Lokacije />} />
+             <Route path="/upiti" element={<Upiti />} />
+             <Route exact path="/nekretnina/:id" element={<NekretninaDetaljno />} />
+             <Route path="/login" element={<Login />} />
+             {/*
           <Route path="/dodaj-nekretninu" element={<DodajNekretninu />} />
-          <Route path="/upiti" element={<Upiti />} />
            {loggedInUser && loggedInUser.isAdmin && <Route path="/dodaj-nekretninu" element={<DodajNekretninu />} />}
           {loggedInUser && loggedInUser.isAdmin && <Route path="/upiti" element={<Upiti />} />} 
-          <Route exact path="/nekretnina/:id" element={<NekretninaDetaljno />} />
           <Route path='' element={<Navigate to='/nekretnine' />} /> */}
           <Route path='*' element={<Navigate to='/nekretnine' />} />
           </Routes>
