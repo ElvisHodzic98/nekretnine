@@ -3,6 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require('mysql');
 const cors = require("cors");
+const bcrypt = require("bcrypt")
+const saltRounds = 10
 
 // Stvaranje veze s bazom podataka
 const configObject = {
@@ -165,6 +167,17 @@ app.post('/upit', (req, res) => {
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
     const query = `SELECT * FROM korisnici WHERE email='${email}'`;
+console.log("aaaa", password);
+    // bcrypt
+    // .genSalt(saltRounds)
+    // .then(salt => {
+    //   console.log('Salt: ', bycript.hash(password,salt))
+    // //   return bcrypt.hash(password, salt)
+    // })
+    // .then(hash => {
+    //   console.log('Hash: ', hash)
+    // })
+    // .catch(err => console.error(err.message))
 
     connection.query(query, function (err, rows) {
         if (err) {
@@ -179,9 +192,25 @@ app.post('/login', (req, res) => {
             }
         }
     });
-
-
 });
+
+
+app.post('/register', (req, res) => {
+    const { userName, email, password } = req.body;
+    const query = `INSERT INTO korisnici (id, admin, name, email, password) VALUES (NULL, false, '${userName}', '${email}', '${password}');`;
+    connection.query(query, function (err, rows) {
+        if (err) {
+            res.json({
+                msg: 'error'
+            });
+        } else {
+            res.json({
+                msg: 'success'
+            });
+        }
+    });
+});
+
 
 // Pokretanje servera
 const port = 3002;

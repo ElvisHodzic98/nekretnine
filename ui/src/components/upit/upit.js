@@ -7,5 +7,6 @@ export const Upit = ({ upit }) => {
         </span>
         <span>Telefon: {upit['broj_telefona']}</span>
         <span>Poruka: {upit.poruka}</span>
+        <a href={`http://localhost:3000/nekretnina/${upit.idNekretnine}`}>Link za nekretninu</a>
     </div>
 };

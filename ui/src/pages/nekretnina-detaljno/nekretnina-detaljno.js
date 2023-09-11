@@ -22,7 +22,7 @@ export const NekretninaDetaljno = () => {
                 idNekretnine: id
             },
             success: function (result) {
-                alert('ok');
+                window.location.href = '/nekretnine';
             },
             error: function (error) {
                 alert('nok');
@@ -30,31 +30,15 @@ export const NekretninaDetaljno = () => {
         });
     };
     function ucitajNekretninu() {
-        // $.ajax({
-        //     url: `http://localhost:3002/nekretnine/${id}`,
-        //     type: "GET",
-        //     dataType: 'json',
-        //     success: function (result) {
-        //         console.log('a', result);
-        //         setNekretnina(result.data);
-        //     }
-        // });
-        setNekretnina({
-            "id": 1,
-            "naziv": "Dvosoban stan - Novo Sarajevo - Dolac Malta - 55 m2",
-            "opis": "Stan je površine 73 m2. Sastoji se od dnevnog boravka koji je povezan sa trepezarijom i kuhinjom, dvije spavaće sobe, hodnika, kupatila, wc-a te balkona. Isti posjeduje parking mjesto ispred zgrade, koje je osigurano rampom te video nadzorom. Stan se nalazi na petom spratu u zgradi koja broji 6 spratova, dvostrano orijentisan, istok/zapad te sunčan tokom čitavnog dana, sa otvorenim pogledom.",
-            "vrsta": "stan",
-            "kvadratura": 73,
-            "struktura": "trosoban",
-            "sprat": 4,
-            "novogradnja": 1,
-            "renoviran": 0,
-            "lift": 1,
-            "garaza": 0,
-            "grijanje": "plin",
-            "cijena": 330000,
-            "slika": "https://trust.ba/wp-content/uploads/2021/01/IMG_4823-1500.jpg"
+        $.ajax({
+            url: `http://localhost:3002/nekretnine/${id}`,
+            type: "GET",
+            dataType: 'json',
+            success: function (result) {
+                setNekretnina(result.data);
+            }
         });
+
     }
     useEffect(() => {
         ucitajNekretninu();
@@ -96,6 +80,7 @@ export const NekretninaDetaljno = () => {
                     <label htmlFor="email"><b>Email</b></label>
                     <input type="text" placeholder="Email" name="uname" required
                         onChange={(e) => setEmail(e.target.value)} />
+                        
                     <label htmlFor="brTel"><b>Broj telefona</b></label>
                     <input type="text" placeholder="Broj telefona" name="brTel" required
                         onChange={(e) => setBrojTelefona(e.target.value)} />
