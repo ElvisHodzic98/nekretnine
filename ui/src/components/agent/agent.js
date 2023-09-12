@@ -10,9 +10,9 @@ export const Agent = ({agent}) => {
             />
         </div>
         <div className="content">
-            <h5 className="title">
+            <h3 className="title">
                {agent.ime}
-            </h5>
+            </h3>
             <div className="svojstva">
             <span>Email: {agent.email}</span>
             <span>Telefon: {agent.telefon}</span>

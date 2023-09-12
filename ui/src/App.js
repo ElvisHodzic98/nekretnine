@@ -32,6 +32,7 @@ function App() {
   return (
     <div>
       <Header></Header>
+      
       {ready && <Router>
         <div className="page-wrapper">
           <Routes>

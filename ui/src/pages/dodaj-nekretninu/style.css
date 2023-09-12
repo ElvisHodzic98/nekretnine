@@ -1,7 +1,24 @@
 .container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+    width: 500px;
+    background-color: #FAFAD2;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    font-size: 14px;
+      
 }
 .container input{
     margin-bottom: 10px;
+}
+.dodaj-nekretninu-forma{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 1000px;
+    gap: 8px;
+    
 }

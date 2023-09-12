@@ -26,7 +26,8 @@ export const Login = () => {
                 window.location.href = '/nekretnine';
             },
             error: function(error){
-                alert('nok')
+                alert('Username ili password nije ispravan')
+            
             }
         });
     }
@@ -41,7 +42,7 @@ export const Login = () => {
                 <input type="password" placeholder="Enter Password" name="psw" required
                     onChange={(e) => setPassword(e.target.value)} />
 
-                <button type="submit" >Login</button>
+                <button className='btn' type="submit" >Login</button>
             </div>
         </form>
     </div>;

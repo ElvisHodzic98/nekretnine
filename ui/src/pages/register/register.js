@@ -43,7 +43,7 @@ export const Register = () => {
                 <input type="password" placeholder="Enter Password" name="psw" required
                     onChange={(e) => setPassword(e.target.value)} />
 
-                <button type="submit" >Register</button>
+                <button className='registerButton' type="submit" >Register</button>
             </div>
         </form>
     </div>;

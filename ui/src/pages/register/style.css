@@ -1,0 +1,16 @@
+.register-wrapper {
+  display:flex;
+  justify-content: start;
+  align-items: start;
+  margin: auto;
+  width: 400px;
+}
+
+.registerButton{
+    background-color: #008CBA; 
+    color: white; 
+    border-radius: 5px;
+    border: 2px solid #01779e;
+    height: 50px;
+    font-size: 20px;
+}

@@ -29,6 +29,8 @@ export const Header = () => {
                 <a href="/lokacije">Lokacije</a>
                 <a href="/login" onClick={onLogout}>{isLoggedIn ? 'Logout' : 'Login'}</a>
                 {!isLoggedIn && <a href="/register">Register</a>}
+                
+
             </div>
         </div>
 

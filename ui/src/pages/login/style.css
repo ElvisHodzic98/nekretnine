@@ -1,5 +1,17 @@
 .login-wrapper {
-    margin: auto;
-    width: 400px;
+  margin: auto;
+  width: 400px;
+  background-image: url("../../../public/login-register-background.png");
+}
+
+  .btn{
+    
+    background-color: #008CBA; 
+    color: white; 
+    border-radius: 5px;
+    border: 2px solid #01779e;
+    height: 50px;
+    font-size: 20px;
+    
   }
   

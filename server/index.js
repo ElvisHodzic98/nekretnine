@@ -3,10 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require('mysql');
 const cors = require("cors");
-const bcrypt = require("bcrypt")
-const saltRounds = 10
+const bcrypt = require("bcrypt");
 
-// Stvaranje veze s bazom podataka
 const configObject = {
     host: "localhost",
     port: 3306,
@@ -167,17 +165,6 @@ app.post('/upit', (req, res) => {
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
     const query = `SELECT * FROM korisnici WHERE email='${email}'`;
-console.log("aaaa", password);
-    // bcrypt
-    // .genSalt(saltRounds)
-    // .then(salt => {
-    //   console.log('Salt: ', bycript.hash(password,salt))
-    // //   return bcrypt.hash(password, salt)
-    // })
-    // .then(hash => {
-    //   console.log('Hash: ', hash)
-    // })
-    // .catch(err => console.error(err.message))
 
     connection.query(query, function (err, rows) {
         if (err) {
@@ -185,11 +172,11 @@ console.log("aaaa", password);
                 msg: 'error'
             });
         } else {
-            if (rows[0].password === password) {
+            bcrypt.compare(password, rows[0].password, function (err) {
+                if (err) { res.status(401).json({ success: false, message: 'Invalid email or password' }); }
                 res.status(200).json({ success: true, message: 'Login successful', isAdmin: rows[0].admin, name: rows[0].name });
-            } else {
-                res.status(401).json({ success: false, message: 'Invalid email or password' });
-            }
+            });
+
         }
     });
 });
@@ -197,18 +184,24 @@ console.log("aaaa", password);
 
 app.post('/register', (req, res) => {
     const { userName, email, password } = req.body;
-    const query = `INSERT INTO korisnici (id, admin, name, email, password) VALUES (NULL, false, '${userName}', '${email}', '${password}');`;
-    connection.query(query, function (err, rows) {
-        if (err) {
-            res.json({
-                msg: 'error'
-            });
-        } else {
-            res.json({
-                msg: 'success'
-            });
-        }
+
+    bcrypt.hash(password, 10, function (err, hash) {
+        if (err) { throw (err); }
+        const query = `INSERT INTO korisnici (id, admin, name, email, password) VALUES (NULL, false, '${userName}', '${email}', '${hash}');`;
+        connection.query(query, function (err, rows) {
+            if (err) {
+                res.json({
+                    msg: 'error'
+                });
+            } else {
+                res.json({
+                    msg: 'success'
+                });
+            }
+        });
     });
+
+
 });
 
 

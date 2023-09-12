@@ -1,5 +1,17 @@
 .agent-box {
     width: 200px;
+    background-color: #FAEBD7;
+    font-family: Georgia, serif;
+    font-weight: 600 ;
+    
+    margin-bottom: 10px;
+   
+
+
+  }
+  .title{
+    margin-left: 5px;
+    text-decoration: underline;
   }
   .agent-box img {
     width: 200px;
@@ -10,10 +22,14 @@
   .agent-box .content {
     display: inline;
     flex-direction: column;
+    
+    
   }
   .agent-box .svojstva {
     display: flex;
     flex-direction: column;
-    font-size: 12px;
+    font-size: 14px;
+    gap: 5px;
+    margin-left: 5px;
   }
   
