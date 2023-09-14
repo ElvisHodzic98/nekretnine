@@ -4,6 +4,7 @@ import $ from 'jquery';
 export const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
     const [userName, setUserName] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,17 +21,17 @@ export const Register = () => {
                 email: email,
                 password: password
             },
-            success: function (result) {
+            success: function () {
                 window.location.href = '/login';
             },
-            error: function (error) {
-                alert('nok')
+            error: function () {
+                alert('Desila se greska');
             }
         });
     }
     return <div className='register-wrapper'>
         <form action="action_page.php" method="post" onSubmit={handleSubmit}>
-            <div className="container">
+            <div className="form-container">
                 <label htmlFor="uname"><b>Name</b></label>
                 <input type="text" placeholder="Enter Name" name="name" required
                     onChange={(e) => setUserName(e.target.value)} />
@@ -43,7 +44,11 @@ export const Register = () => {
                 <input type="password" placeholder="Enter Password" name="psw" required
                     onChange={(e) => setPassword(e.target.value)} />
 
-                <button className='registerButton' type="submit" >Register</button>
+                <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required
+                    onChange={(e) => setRepeatPassword(e.target.value)} />
+
+                <button className='submitButton' type="submit" disabled={password !== repeatPassword} >Register</button>
             </div>
         </form>
     </div>;

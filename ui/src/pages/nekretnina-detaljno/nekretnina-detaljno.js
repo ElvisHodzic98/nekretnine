@@ -7,6 +7,9 @@ export const NekretninaDetaljno = () => {
     const [email, setEmail] = useState('');
     const [poruka, setPoruka] = useState('');
     const [brojTelefona, setBrojTelefona] = useState('');
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     let { id } = useParams();
     const handleSubmit = (event) => {
         // Prevent page reload
@@ -25,7 +28,7 @@ export const NekretninaDetaljno = () => {
                 window.location.href = '/nekretnine';
             },
             error: function (error) {
-                alert('nok');
+                alert('Desila se greska');
             }
         });
     };
@@ -42,6 +45,7 @@ export const NekretninaDetaljno = () => {
     }
     useEffect(() => {
         ucitajNekretninu();
+        setIsLoggedIn(localStorage.getItem('loggedInUserEmail') !== null);
     }, [id]);
 
     return nekretnina &&
@@ -74,23 +78,25 @@ export const NekretninaDetaljno = () => {
             <div className='opis'>
                 {nekretnina.opis}
             </div>
-            <h3>Sviđa ti se nekretnina? Kontaktiraj nas!</h3>
-            <form method="post" onSubmit={handleSubmit} className='kontakt-forma'>
-                <div className="container">
-                    <label htmlFor="email"><b>Email</b></label>
-                    <input type="text" placeholder="Email" name="uname" required
-                        onChange={(e) => setEmail(e.target.value)} />
-                        
-                    <label htmlFor="brTel"><b>Broj telefona</b></label>
-                    <input type="text" placeholder="Broj telefona" name="brTel" required
-                        onChange={(e) => setBrojTelefona(e.target.value)} />
+            {isLoggedIn ?
+                <form method="post" onSubmit={handleSubmit} className='kontakt-forma'>
+                    <div className="form-container">
+                        <label htmlFor="email"><b>Email</b></label>
+                        <input type="text" placeholder="Email" name="uname" required
+                            onChange={(e) => setEmail(e.target.value)} />
 
-                    <label htmlFor="poruka"><b>Poruka</b></label>
-                    <input className='poruka-input' type="text" placeholder="Upiši poruku" name="poruka" required
-                        onChange={(e) => setPoruka(e.target.value)} />
+                        <label htmlFor="brTel"><b>Broj telefona</b></label>
+                        <input type="text" placeholder="Broj telefona" name="brTel" required
+                            onChange={(e) => setBrojTelefona(e.target.value)} />
 
-                    <button type="submit" >Pošalji upit</button>
-                </div>
-            </form>
-        </div>;
+                        <label htmlFor="poruka"><b>Poruka</b></label>
+                        <input className='poruka-input' type="text" placeholder="Upiši poruku" name="poruka" required
+                            onChange={(e) => setPoruka(e.target.value)} />
+
+                        <button type="submit" className='submitButton' >Pošalji upit</button>
+                    </div>
+                </form>
+                :
+                <h3>Sviđa ti se nekretnina? <a href='/login'>Logiraj</a> se i kontaktiraj nas!</h3>}
+        </div>
 };

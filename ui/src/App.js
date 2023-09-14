@@ -30,11 +30,11 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <Header></Header>
-      
+
       {ready && <Router>
-        <div className="page-wrapper">
+        <div className='routed-wrapper'>
           <Routes>
             <Route path="/nekretnine" element={<Nekretnine />} />
             <Route path="/agenti" element={<Agenti />} />
@@ -51,8 +51,7 @@ function App() {
         </div>
       </Router>}
       <Footer></Footer>
-    </div>
-
+    </>
   );
 }
 

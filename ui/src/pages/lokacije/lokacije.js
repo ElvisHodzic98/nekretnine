@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 
 export const Lokacije = () => {
     const [lokacije, setLokacije] = useState([]);
+
     function ucitajLokacije() {
-     
         $.ajax({
             url: "http://localhost:3002/lokacije",
             type: "GET",
@@ -20,11 +20,12 @@ export const Lokacije = () => {
         ucitajLokacije();
     }, []);
 
-    return <div>
+    return <div className='lokacije-page'>
+        <img src='lokacije.png' />
         <section className="lokacije-wrapper">
             {lokacije.map((l, i) => {
                 return <Lokacija key={i} lokacija={l} />;
             })}
         </section>
-    </div>
+    </div>;
 };

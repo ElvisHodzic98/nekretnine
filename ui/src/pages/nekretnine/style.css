@@ -1,11 +1,6 @@
 .item-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 50px 20px;
-    font-size: 18px;
-    background-image: url("../../../public/background-image.png");
-    background-color: #cccccc;
-    
-    
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 18px;
+}

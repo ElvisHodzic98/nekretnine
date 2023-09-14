@@ -35,7 +35,7 @@ export const DodajNekretninu = () => {
                 window.location.href = '/nekretnine';
             },
             error: function (error) {
-                alert('nok');
+                alert('Desila se greska');
             }
         });
     }
@@ -43,7 +43,12 @@ export const DodajNekretninu = () => {
 
     return <div className="dodaj-nekretninu">
         <form onSubmit={handleSubmit} className="dodaj-nekretninu-forma">
-            <div className="container">
+            <div className="slika">
+                <img src="dodaj-nekretninu.png" />
+            </div>
+            <div className="form-container">
+                <h3>Najlakši način da dođete do pravog kupca… Sve što trebate uraditi je popuniti formu ispod.</h3>
+                <br/>
                 <label htmlFor="naziv">Naziv</label>
                 <input required onChange={(e) => setNaziv(e.target.value)} type="text" placeholder="Naziv" name="naziv"></input>
 
@@ -62,40 +67,40 @@ export const DodajNekretninu = () => {
                 <label htmlFor="sprat">Sprat</label>
                 <input required onChange={(e) => setSprat(e.target.value)} type="text" placeholder="Sprat" name="sprat"></input>
 
-                <label htmlFor="novogradnja">Novogradnja</label>
-                <input onChange={(e) => setNovogradnja(e.target.value)} type="checkbox" placeholder="Novogradnja" name="novogradnja"></input>
+                <div className="checkboxes">
+                    <label htmlFor="novogradnja">Novogradnja</label>
+                    <input onChange={(e) => setNovogradnja(e.target.value)} type="checkbox" placeholder="Novogradnja" name="novogradnja"></input>
 
-                <label htmlFor="renoviran"><b>Renoviran</b></label>
-                <input type="checkbox" placeholder="Renoviran" name="renoviran" checked={renoviran}
-                    onChange={(e) => setRenoviran(e.target.checked)} />
+                    <label htmlFor="renoviran">Renoviran</label>
+                    <input type="checkbox" placeholder="Renoviran" name="renoviran" checked={renoviran}
+                        onChange={(e) => setRenoviran(e.target.checked)} />
 
-                <label htmlFor="lift"><b>Lift</b></label>
-                <input type="checkbox" placeholder="Lift" name="lift" checked={lift}
-                    onChange={(e) => setLift(e.target.checked)} />
+                    <label htmlFor="lift">Lift</label>
+                    <input type="checkbox" placeholder="Lift" name="lift" checked={lift}
+                        onChange={(e) => setLift(e.target.checked)} />
 
-                <label htmlFor="garaza"><b>Garaza</b></label>
-                <input type="checkbox" placeholder="Garaza" name="garaza" checked={garaza}
-                    onChange={(e) => setGaraza(e.target.checked)} />
+                    <label htmlFor="garaza">Garaza</label>
+                    <input type="checkbox" placeholder="Garaza" name="garaza" checked={garaza}
+                        onChange={(e) => setGaraza(e.target.checked)} />
+                </div>
 
-                <label htmlFor="grijanje"><b>Grijanje</b></label>
+                <label htmlFor="grijanje">Grijanje</label>
                 <input type="text" placeholder="Grijanje" name="grijanje" required
                     onChange={(e) => setGrijanje(e.target.value)} />
 
-                <label htmlFor="cijena"><b>Cijena</b></label>
+                <label htmlFor="cijena">Cijena</label>
                 <input type="number" placeholder="Cijena" name="cijena" required
                     onChange={(e) => setCijena(e.target.value)} />
 
-                <label htmlFor="slika"><b>Slika</b></label>
+                <label htmlFor="slika">Slika</label>
                 <input type="text" placeholder="URL Slike" name="slika" required
                     onChange={(e) => setSlika(e.target.value)} />
 
-
-
-
-                <button type="submit">Dodaj nekretninu</button>
+                <button type="submit" className="submitButton">Dodaj nekretninu</button>
 
             </div>
+
         </form>
-    </div>
+    </div>;
 }
 

@@ -171,10 +171,15 @@ app.post('/login', (req, res) => {
             res.json({
                 msg: 'error'
             });
-        } else {
-            bcrypt.compare(password, rows[0].password, function (err) {
-                if (err) { res.status(401).json({ success: false, message: 'Invalid email or password' }); }
-                res.status(200).json({ success: true, message: 'Login successful', isAdmin: rows[0].admin, name: rows[0].name });
+        }
+        else if (!rows[0]) {
+            res.status(401).json({ success: false, message: 'Unknown user' });
+        }
+        else {
+            bcrypt.compare(password, rows[0].password, function (err, result) {
+                console.log(err, result, err || !result);
+                if (err !== undefined || !result) { res.status(401).json({ success: false, message: 'Invalid Password' }); }
+                else res.status(200).json({ success: true, message: 'Login successful', isAdmin: rows[0].admin, name: rows[0].name });
             });
 
         }

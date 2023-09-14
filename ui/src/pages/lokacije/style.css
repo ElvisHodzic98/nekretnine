@@ -1,4 +1,7 @@
 .lokacije-wrapper {
     padding: 20px;
-    
+    flex-grow: 1;
+}
+.lokacije-page {
+    display: flex;
 }

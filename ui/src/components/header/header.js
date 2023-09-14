@@ -18,7 +18,7 @@ export const Header = () => {
     }
     return <div className="header">
         <div className='header-inner'>
-            <a className='logo' href="/" >CompanyLogo</a>
+            <a className='logo' href="/" >ElvisCompany</a>
             {userName !== null && <div className='ime'>Cao, {userName}</div>}
             <div className="header-right">
                 <a href="/nekretnine">Nekretnine</a>
